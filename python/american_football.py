@@ -3,6 +3,7 @@ import http.client
 from dotenv import load_dotenv
 import os
 import json
+from .League import League
 
 # Hide my api key from github
 load_dotenv()
@@ -16,24 +17,28 @@ headers = {
     'x-rapidapi-key': api_key
     }
 
-# get all leagues
-conn.request("GET", "/leagues", headers=headers)
+def get_leagues():
+    # This is a method that will get all leagues of in the sport and return the leagues
 
-res = conn.getresponse()
-data = res.read()
+    # api call to get the leagues
+    conn.request("GET", "/leagues", headers=headers)
 
-# makes data into a string so i can make it a python dictionary
-json_str = data.decode('utf-8')
+    res = conn.getresponse()
+    data = res.read()
 
-json_data = json.loads(json_str)
+    # makes data into a string so i can make it a python dictionary
+    json_str = data.decode('utf-8')
 
-# for each result parse the league
-# make a dictionary that stores the id of the league named
-leagues = []
-for r in json_data['response']:
-    league = {"Name": r['league']['name'],
-              "ID": r['league']['id']
-            }
-    leagues.append(league)
+    json_data = json.loads(json_str)
 
-print(leagues)
+    # make a list of leagues
+    leagues = []
+    # for each response gotten we will create a League object
+    for r in json_data['response']:
+        # parse info from the api call
+        id = r['league']['id']
+        name = r['league']['name']
+        seasons = [s['year'] for s in r['seasons']]
+        # create a league based on the parsed info and append it to the leagues list
+        leagues.append(League(id, name, seasons))
+    return leagues
