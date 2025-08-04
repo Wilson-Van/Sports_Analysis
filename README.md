@@ -18,8 +18,10 @@ I will be using the documentation of the api-sports api found at https://api-spo
 
 ## Output:
 
-As a finished product the program should be able to display a webpage which allows the user to select between tabs of sports and allows the user to select a team/player for certain stats about them. This is currently not finished I am currently working on getting familiar with the API so I will be working on getting functions to get a certain sport api called and getting information such as team names, players on said teams, and some trends (these could be something like average team stats and average player stats).
+As a finished product the program should be able to display a webpage which allows the user to select between tabs of sports and allows the user to select a team/player for certain stats about them. 
 
 ## Issues:
 
 After doing a bit of research this api only allows for 100 api calls a day which could be an issue if this program was for commercial use, however this is for personal use and I don't believe myself or anyone I would allow to use my api key would call the api 100 times a day. If 100 api calls are too little I could call the api once and store the stats/odds into variables and display those variables instead of the actual api call. I could then recall the api after certain intervals of time and update the variables at that time.
+
+After some experimentation I found that with the free version of the api 

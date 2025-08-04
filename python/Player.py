@@ -1,15 +1,15 @@
-# this is a League class
+# this is a Player class
 
-class League:
+class Player:
     # constructor method
-    def __init__(self, id, name, seasons):
+    def __init__(self, id, name, stats):
         self.id = id
         self.name = name
-        self.seasons = seasons
+        self.stats = stats
 
     # to string method
     def __str__(self):
-        return f"Name: {self.name} ID: {self.id} Seasons: {self.seasons}"
+        return f"Name: {self.name} ID: {self.id}"
     
     def __repr__(self):
         return self.__str__()
@@ -21,5 +21,6 @@ class League:
     def get_id(self):
         return self.id
     
-    def get_seasons(self):
-        return self.seasons
+    def get_stats(self):
+        return self.stats
+    
