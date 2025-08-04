@@ -95,8 +95,8 @@ def get_team_players(team_id: int, season: int):
         id = r['id']
         name = r['name']
         # call a helper function to get the player stats
-        stats = get_player_stats(id, season)
-        players.append(Player(id, name, stats))
+        #stats = get_player_stats(id, season)
+        players.append(Player(id, name, None))
     return players
 
 def get_player_stats(player_id: int, season: int):
@@ -110,3 +110,6 @@ def get_player_stats(player_id: int, season: int):
     json_str = data.decode('utf-8')
 
     json_data = json.loads(json_str)
+
+    for stat in json_data['response']:
+        print(stat)

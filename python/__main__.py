@@ -10,9 +10,7 @@ def main():
     #af_teams = af.get_teams(1, 2021)
     #for team in af_teams:
         #print(team)
-    players = af.get_team_players(12, 2022)
-    for player in players:
-        print(player)
+    players = af.get_player_stats(842, 2022)
 
 
 
